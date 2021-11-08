@@ -1,0 +1,53 @@
+﻿<Window x:Class="WpfHomeWork.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="WPF-Trees" Height="450" Width="800">
+    <Grid Background="AliceBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="10">
+
+            <TextBlock Text="ФИО сотрудника" TextAlignment="Center"/>
+            <TextBox Text="{Binding Name}" />
+            <TextBlock Text="Зарплата сотрудника" TextAlignment="Center"/>
+            <TextBox Text="{Binding Salary}" />
+            <Button Command="{Binding AddEmployeeCommand, Mode=OneTime}" Content="Ввести данные по сотруднику" />
+
+            <Button Command="{Binding CreateTreeCommand, Mode=OneTime}" Content="Создать дерево по сотрудникам" Margin="0 40 0 0" />
+
+            <TextBlock Text="Поиск по зарплате" TextAlignment="Center" Margin="0 40 0 0"/>
+            <TextBox Text="{Binding Salary}" />
+            <Button Command="{Binding AddEmployeeCommand, Mode=OneTime}" Content="Поиск" />
+            
+            <TextBlock Text="Результат поиска" TextAlignment="Center" Margin="0 20 0 0"/>
+            <TextBox Text="{Binding Salary}" />
+        </StackPanel>
+
+        <ScrollViewer Grid.Column="1">
+            <ItemsControl  ItemsSource="{Binding Employees, Mode=OneTime}" Margin="10">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding OutputData}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        
+        <ScrollViewer Grid.Column="2">
+            <ItemsControl  ItemsSource="{Binding TreeEmployee, Mode=OneTime}" Margin="10">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding OutputData}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Window>
