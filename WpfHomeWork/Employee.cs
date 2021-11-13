@@ -1,4 +1,6 @@
-﻿using WpfHomeWork.Implementations;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using WpfHomeWork.Implementations;
 
 namespace WpfHomeWork
 {
@@ -39,5 +41,33 @@ namespace WpfHomeWork
             }
         }
 
+        public static void Traverse(Employee employee, ObservableCollection<Employee> SortedEmployees)
+        {
+
+            if (employee.Left != null)
+            {
+                Traverse(employee.Left, SortedEmployees);
+            }
+
+            SortedEmployees.Add(employee);
+
+            if (employee.Right != null)
+            {
+                Traverse(employee.Right, SortedEmployees);
+            }
+
+        }
+
+        public static string SearchSalary(ObservableCollection<Employee> Employees, int inputForSearch)
+        {
+            for (int i = 0; i < Employees.Count; i++)
+            {
+                if (Employees[i].Salary == inputForSearch)
+                {
+                    return Employees[i].OutputData;
+                }
+            }
+            return "Ничего не найдено";
+        }
     }
 }

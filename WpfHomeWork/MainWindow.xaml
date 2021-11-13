@@ -23,11 +23,11 @@
             <Button Command="{Binding CreateTreeCommand, Mode=OneTime}" Content="Создать дерево по сотрудникам" Margin="0 40 0 0" />
 
             <TextBlock Text="Поиск по зарплате" TextAlignment="Center" Margin="0 40 0 0"/>
-            <TextBox Text="{Binding Salary}" />
-            <Button Command="{Binding AddEmployeeCommand, Mode=OneTime}" Content="Поиск" />
-            
+            <TextBox Text="{Binding InputForSearch}" />
+            <Button Command="{Binding SearchCommand, Mode=OneTime}" Content="Поиск" />
+
             <TextBlock Text="Результат поиска" TextAlignment="Center" Margin="0 20 0 0"/>
-            <TextBox Text="{Binding Salary}" />
+            <TextBox Text="{Binding Path=FoundedEmployee}" />
         </StackPanel>
 
         <ScrollViewer Grid.Column="1">
@@ -39,9 +39,9 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        
+
         <ScrollViewer Grid.Column="2">
-            <ItemsControl  ItemsSource="{Binding TreeEmployee, Mode=OneTime}" Margin="10">
+            <ItemsControl  ItemsSource="{Binding SortedEmployees, Mode=OneTime}" Margin="10">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding OutputData}" />
