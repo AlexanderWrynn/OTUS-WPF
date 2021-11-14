@@ -22,6 +22,8 @@ namespace WpfHomeWork
         public decimal Salary { get; set; }
         public int InputForSearch { get; set; }
         public string FoundedEmployee { get; set; }
+        public string Foreground { get; set; }
+
         private void AddEmployee()
         {
             var employee = new Employee() { Name = this.Name, Salary = this.Salary };
@@ -56,6 +58,19 @@ namespace WpfHomeWork
         private void Search()
         {
             FoundedEmployee = Employee.SearchSalary(Employees, InputForSearch);
+
+            if (FoundedEmployee.Equals("Ничего не найдено"))
+            {
+                Foreground = "Red";
+                RaisePropertyChanged(() => Foreground);
+            }
+
+            else
+            {
+                Foreground = "Black";
+                RaisePropertyChanged(() => Foreground);
+            }
+
             RaisePropertyChanged(() => FoundedEmployee);
         }
     }

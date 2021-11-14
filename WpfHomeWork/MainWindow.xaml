@@ -18,16 +18,16 @@
             <TextBox Text="{Binding Name}" />
             <TextBlock Text="Зарплата сотрудника" TextAlignment="Center"/>
             <TextBox Text="{Binding Salary}" />
-            <Button Command="{Binding AddEmployeeCommand, Mode=OneTime}" Content="Ввести данные по сотруднику" />
+            <Button Command="{Binding AddEmployeeCommand, Mode=OneTime}" Content="Ввести данные по сотруднику"  Margin="30 20 30 0"/>
 
             <Button Command="{Binding CreateTreeCommand, Mode=OneTime}" Content="Создать дерево по сотрудникам" Margin="0 40 0 0" />
 
             <TextBlock Text="Поиск по зарплате" TextAlignment="Center" Margin="0 40 0 0"/>
             <TextBox Text="{Binding InputForSearch}" />
-            <Button Command="{Binding SearchCommand, Mode=OneTime}" Content="Поиск" />
+            <Button Command="{Binding SearchCommand, Mode=OneTime}" Content="Поиск" Margin="40 20 40 0"/>
 
             <TextBlock Text="Результат поиска" TextAlignment="Center" Margin="0 20 0 0"/>
-            <TextBox Text="{Binding Path=FoundedEmployee}" />
+            <TextBox Text="{Binding Path=FoundedEmployee}" Foreground="{Binding Foreground}" />
         </StackPanel>
 
         <ScrollViewer Grid.Column="1">
